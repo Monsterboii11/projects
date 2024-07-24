@@ -1,0 +1,19 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-center {
+    text-align: center;
+    padding: 20px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+.container-center h3 {
+    margin: 0 0 20px 0; 
+}
+.container-center a {
+    display: inline-block;
+    margin: 10px; 
+}
