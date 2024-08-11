@@ -180,20 +180,20 @@ include "dynamic_role_title.php";
                     </select>
 
                     <label for="start_date" class="form-label">Start date</label>
-                    <input type="date" id="start_date" name="start_date" class="form-control">
+                    <input type="date" id="start_date" name="start_date" class="form-control" required>
 
                     <label for="end_date" class="form-label">End date</label>
-                    <input type="date" id="end_date" name="end_date" class="form-control">
+                    <input type="date" id="end_date" name="end_date" class="form-control"required>
 
                     <label for="project_members" class="form-label">Select Member to assign task</label>
-                    <select id="project_members" name="project_members" class="form-select">
+                    <select id="project_members" name="project_members" class="form-select"required>
                         <option value="">Select Member</option>
                         <?php
-                        include 'connection.php'; // Include your database connection
+                        include 'connection.php';
 
 
-                        // Query to fetch project managers' names
-                        $sql = "SELECT id, name FROM users WHERE user_role = 2"; // Adjust user_role as per your database schema
+                        // Query to fetch users names
+                        $sql = "SELECT id, name FROM users WHERE user_role = 2";
                         $result = $conn->query($sql);
 
                         // Check if query was successful

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2024 at 01:58 AM
+-- Generation Time: Aug 11, 2024 at 05:45 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,8 +40,9 @@ CREATE TABLE `project_comments` (
 --
 
 INSERT INTO `project_comments` (`id`, `project_id`, `user_id`, `comment`, `timestamp`) VALUES
-(11, 20, 8, 'Hello please work in time guys', '2024-07-23 22:24:43'),
-(12, 20, 18, 'Okay sir', '2024-07-23 22:55:06');
+(14, 22, 8, 'Please work in time guys!!', '2024-07-25 18:21:41'),
+(15, 22, 20, 'Okay sir', '2024-07-25 18:22:59'),
+(16, 22, 8, 'ok', '2024-08-02 19:20:38');
 
 -- --------------------------------------------------------
 
@@ -79,7 +80,7 @@ CREATE TABLE `project_list` (
 --
 
 INSERT INTO `project_list` (`id`, `project_name`, `status`, `start_date`, `end_date`, `description`, `user_id`) VALUES
-(20, 'School management system', 'Process', '2024-07-24', '2024-07-31', 'Make a frontend and backend', 8);
+(22, 'School management system', 'Pending', '2024-07-26', '2024-08-14', 'Do both frontend and backend', 8);
 
 -- --------------------------------------------------------
 
@@ -98,8 +99,8 @@ CREATE TABLE `project_team_members` (
 --
 
 INSERT INTO `project_team_members` (`id`, `project_id`, `user_id`) VALUES
-(46, 20, 18),
-(47, 20, 19);
+(50, 22, 18),
+(51, 22, 20);
 
 -- --------------------------------------------------------
 
@@ -140,7 +141,9 @@ INSERT INTO `users` (`id`, `name`, `email`, `number`, `password`, `user_role`) V
 (8, 'admin', 'admin@admin.com', '987456123', '$2y$10$8fcMltYzcze789Kw.EDAVubC18bnY6bEiB2qEc4pZ1LtxRKcV3Mau', 1),
 (18, 'Ashish Basnet', 'abasnet018@gmail.com', '9823819698', '$2y$10$P5vw8ltBJfWb5qW4R72nKeaCyGPwpWtJwY0dvRyaJpKIuuJmCJtDm', 2),
 (19, 'Dinesh Rana Magar', 'dnes@gmail.com', '9874561235', '$2y$10$WHEDHFWi3mrwwxjMT/m6xO1qR.R14k1MzComa0xjdlk8wBHYp6Uwq', 2),
-(20, 'Dipu Adhikari', 'dipu@gmail.com', '9856471230', '$2y$10$MnZEvCQxjN7xF8Me6LUV1OnYgDQFl5mBunxa2aVqgJRedkd5oRmY2', 2);
+(20, 'Dipu Adhikari', 'dipu@gmail.com', '9856471230', '$2y$10$MnZEvCQxjN7xF8Me6LUV1OnYgDQFl5mBunxa2aVqgJRedkd5oRmY2', 2),
+(21, 'Dipak Dhakal', 'dipak@gmail.com', '9856231471', '$2y$10$9tpDUYgr/ZdkfwkeEpELKeVfrxnsDJyUAqfiG60M3kd3E3sS3qiWK', 2),
+(22, 'Rakesh Ayer', 'rakesh@gmail.com', '4116846514', '$2y$10$6wbhfIyood6M4GKIYpoNx.dYzvu85nT.jzda0tkesNR6X2tYv4/Ky', 2);
 
 --
 -- Indexes for dumped tables
@@ -197,37 +200,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `project_comments`
 --
 ALTER TABLE `project_comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `project_files`
 --
 ALTER TABLE `project_files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `project_list`
 --
 ALTER TABLE `project_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `project_team_members`
 --
 ALTER TABLE `project_team_members`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `task_list`
 --
 ALTER TABLE `task_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Constraints for dumped tables

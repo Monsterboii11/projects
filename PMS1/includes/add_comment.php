@@ -6,7 +6,7 @@ include 'connection.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['project_id'], $_POST['comment'])) {
     $projectId = $_POST['project_id'];
     $comment = $_POST['comment'];
-    $userId = $_SESSION['user_id']; // Assuming user is logged in and user_id is stored in session
+    $userId = $_SESSION['user_id']; //user is logged in and user_id is stored in session
 
     // Prepare and execute SQL statement to insert comment into database
     $sql = "INSERT INTO project_comments (project_id, user_id, comment) VALUES (?, ?, ?)";

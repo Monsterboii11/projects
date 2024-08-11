@@ -148,8 +148,8 @@ include "dynamic_role_title.php";
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            max-width: 45%;
-            width: calc(50% - 40px);
+            max-width: 100%;
+            width: calc(100% - 40px);
             /* Adjust width to take 50% of the available space */
             margin: 20px;
             float: left;
@@ -229,8 +229,8 @@ include "dynamic_role_title.php";
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            max-width: 45%;
-            width: calc(50% - 40px);
+            max-width: 100%;
+            width: calc(100% - 40px);
             /* Adjust width to take 50% of the available space */
             margin: 20px;
             float: left;
@@ -480,50 +480,6 @@ include "dynamic_role_title.php";
                     $conn->close();
                     ?>
                 </div>
-                <!-- Comments Section -->
-                <div class="comments-section">
-                    <h2>Comments</h2>
-                    <?php
-                    // Include necessary files and database connection
-                    include 'connection.php';
-
-                    // Check if project ID is provided in the URL
-                    if (isset($_GET['id'])) {
-                        $projectId = $_GET['id'];
-
-                        // Display existing comments
-                        $sqlComments = "SELECT pc.comment, pc.timestamp, u.name AS commenter FROM project_comments pc
-                            INNER JOIN users u ON pc.user_id = u.id
-                            WHERE pc.project_id = ?
-                            ORDER BY pc.timestamp DESC";
-                        $stmtComments = $conn->prepare($sqlComments);
-                        $stmtComments->bind_param("i", $projectId);
-                        $stmtComments->execute();
-                        $resultComments = $stmtComments->get_result();
-
-                        echo '<ul>';
-                        while ($row = $resultComments->fetch_assoc()) {
-                            echo '<li>';
-                            echo '<p><strong>' . htmlspecialchars($row['commenter']) . '</strong> - ' . htmlspecialchars($row['timestamp']) . '</p>';
-                            echo '<p>' . htmlspecialchars($row['comment']) . '</p>';
-                            echo '</li>';
-                        }
-                        echo '</ul>';
-
-                        $stmtComments->close();
-                    }
-                    $conn->close();
-                    ?>
-
-                    <!-- Add Comment Form -->
-                    <form action="add_comment.php" method="post" class="add-comment-form">
-                        <input type="hidden" name="project_id" value="<?php echo htmlspecialchars($projectId); ?>">
-                        <textarea name="comment" placeholder="Add a comment..." rows="3" required></textarea><br>
-                        <button type="submit">Add Comment</button>
-                    </form>
-                </div>
-                <!-- Comments Section -->
-
                 <div class="files-section">
                     <h2>Attachments</h2>
 
@@ -572,6 +528,52 @@ include "dynamic_role_title.php";
                         <button type="submit">Add File</button>
                     </form>
                 </div>
+                <!-- Comments Section -->
+                <div class="comments-section">
+                    <h2>Comments</h2>
+                    <?php
+                    // Include necessary files and database connection
+                    include 'connection.php';
+
+                    // Check if project ID is provided in the URL
+                    if (isset($_GET['id'])) {
+                        $projectId = $_GET['id'];
+
+                        // Display existing comments in ascending order with formatted timestamps
+                        $sqlComments = "SELECT pc.comment, pc.timestamp, u.name AS commenter FROM project_comments pc
+    INNER JOIN users u ON pc.user_id = u.id
+    WHERE pc.project_id = ?
+    ORDER BY pc.timestamp ASC";  // Ensure comments are fetched in ascending order
+                        $stmtComments = $conn->prepare($sqlComments);
+                        $stmtComments->bind_param("i", $projectId);
+                        $stmtComments->execute();
+                        $resultComments = $stmtComments->get_result();
+
+                        echo '<ul>';
+                        while ($row = $resultComments->fetch_assoc()) {
+                            // Format timestamp to display as M d, Y g:i A
+                            $formattedDateTime = date("M d, Y g:i A", strtotime($row['timestamp']));
+
+                            echo '<li>';
+                            echo '<p><strong>' . htmlspecialchars($row['commenter']) . '</strong> - ' . htmlspecialchars($formattedDateTime) . '</p>';
+                            echo '<p>' . htmlspecialchars($row['comment']) . '</p>';
+                            echo '</li>';
+                        }
+                        echo '</ul>';
+
+                        $stmtComments->close();
+                    }
+                    $conn->close();
+                    ?>
+
+                    <!-- Add Comment Form -->
+                    <form action="add_comment.php" method="post" class="add-comment-form">
+                        <input type="hidden" name="project_id" value="<?php echo htmlspecialchars($projectId); ?>">
+                        <textarea name="comment" placeholder="Add a comment..." rows="3" required></textarea><br>
+                        <button type="submit">Add Comment</button>
+                    </form>
+                </div>
+                <!-- Comments Section -->
 
         </main>
         <!-- MAIN -->

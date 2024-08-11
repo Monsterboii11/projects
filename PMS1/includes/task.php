@@ -227,6 +227,7 @@ if ($_SESSION['user_role'] == 1) {
             });
         });
     </script>
+    
 </body>
 
 </html>
